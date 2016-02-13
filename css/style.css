@@ -2,6 +2,7 @@
 	background-color: 99CCFF;
 	height: 400px;
 	margin-bottom: 0px;
+	text-align: center;
 }
 
 h1 {
@@ -14,9 +15,9 @@ h1 {
 }
 
 p {
-	color: red;
-	font-size: 30px;
-	background-color: #00BFFF;
+	color: black;
+	font-size: 12px;
+	
 	opacity: 0.7;
 	font-family: 'Lobster', cursive;
 	margin-bottom: 5px;
@@ -49,3 +50,18 @@ h4 {
 #inbox-counter {
 	color: blue;
 }
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+
+}
+th, td {
+    padding: 5px;
+}
+
+.funky {
+	font-size: 5px;
+}
+	

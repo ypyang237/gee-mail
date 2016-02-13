@@ -22,15 +22,98 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+
         
-      };
+        var previousMails = window.geemails.length;
+
+        for (i = 0; i < previousMails; i++) {
+
+            var newMessage = window.geemails[i];
+            appendMessage(newMessage);
+
+        };
+
+        // adding in the new emails :sorted by date, sender, subject and body
+        //var main = function() {
+		//$(".row").append(function() {
+		//	var now = new Date();
+		//	return generateMessage(now);
+		//});
+		
+
+		function appendMessage () {
+                
+        		var newMessage = getNewMessage();
+
+                var date = newMessage.date;
+                var sender = newMessage.sender;
+                var subject = newMessage.subject;
+                var body = newMessage.body;
+
+                
+                
+
+                $('.start').prepend(
+
+                '<tr>' +
+    				+ '<td></td>'
+    				+ '<td>' + date + '</td>'  
+    				+ '<td>' +  subject + '</td>' 
+    				+ '<td>' + sender + '</td>' + 		
+  				'</tr>'	+
+
+  				'<tr>' + 
+				
+					'<td colspan="3" class="emailbdy funky">' + '<a class="clickMe" href="#">'+ body + '</a>' + '</td>' +
+
+  				'</tr>'
+				
+
+  				);
+
+                //$('.emailbdy').hide();
+
+         		$('.emailbdy').click(function() {
+
+         			$(this).toggleClass('funky');
+
+         		});      	
+		};
+
+
+			function clickToggle() {
+		         $('.emailbdy').click(function() {
+
+         			$(this).toggleClass('funky');
+
+         		}); 
+		     };
+
+		     clickToggle();
+
+       
+  
+
+
+
+
+	setInterval(appendMessage,1000);
+
+		    
+       }; 
+      
     </script>
+
+
+    
+
 	</head>
 
-
-
-
 	<body>
+
+
+
+
 		<div class="container" id="main">
 				
 
@@ -40,21 +123,36 @@
     			<p>Click each one open to view the content!</p> 
   		</div>
 
-  		<div class="row">
-    		<div class="col-sm-4">
+		<div class="email-heading">
+    		<div class="col-sm-6">
+    		<div class="dates"></div>
       			<h3>Date</h3>
-      			<p>This is where the date goes</p>
+      			
    			</div>
    			<div class="col-sm-4">
+   			<div class="subjects"></div>
       			<h3>Subject</h3>
-      			<p>This is where the subjet goes</p>
+      			
     		</div>
-    		<div class="col-sm-4">
+    		<div class="col-sm-2">
+    		<div class="senders"></div>
       			<h3>Sender</h3>        
-      			<p>This is where the Sender goes</p>
+      			
     		</div>
   		</div>
 
+  	
+
+	<table class="start" style="width:100%">
+	</table>
+
+
+
+                
+                
+
+
+
 
 	</body>
-</html>
+
