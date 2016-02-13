@@ -1,0 +1,51 @@
+.container {
+	background-color: 99CCFF;
+	height: 400px;
+	margin-bottom: 0px;
+}
+
+h1 {
+	color: black;
+	font-size: 80px;
+	background-color: #D8D8D8;
+	opacity: 0.8;
+	font-family: 'Lobster', cursive;
+	margin-bottom: 5px;
+}
+
+p {
+	color: red;
+	font-size: 30px;
+	background-color: #00BFFF;
+	opacity: 0.7;
+	font-family: 'Lobster', cursive;
+	margin-bottom: 5px;
+}
+
+.email-counter {
+	font-size: 25px;
+	margin-top: 20px;
+	margin-bottom: 5px;
+	color: red;
+	border: black;
+}
+
+.generated-row {
+	font-weight: bold;
+}
+
+.row-highlight:hover { 
+    background-color: yellow;
+}
+
+a:hover { 
+    background-color: yellow;
+}
+
+h4 {
+	text-decoration: underline;
+}
+
+#inbox-counter {
+	color: blue;
+}
