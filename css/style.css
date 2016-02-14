@@ -1,8 +1,12 @@
 .container {
-	background-color: 99CCFF;
-	height: 400px;
+	background-color: #1f1f7a;
+	height: 350px;
+	width: 1000px;
 	margin-bottom: 0px;
 	text-align: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 10% 80%; 
 }
 
 h1 {
@@ -10,7 +14,7 @@ h1 {
 	font-size: 80px;
 	background-color: #D8D8D8;
 	opacity: 0.8;
-	font-family: 'Lobster', cursive;
+	font-family: "Comic Sans MS", cursive, sans-serif
 	margin-bottom: 5px;
 }
 
@@ -19,7 +23,7 @@ p {
 	font-size: 12px;
 	
 	opacity: 0.7;
-	font-family: 'Lobster', cursive;
+	font-family: "Comic Sans MS", cursive, sans-serif
 	margin-bottom: 5px;
 }
 
@@ -40,7 +44,7 @@ p {
 }
 
 a:hover { 
-    background-color: yellow;
+    background-color: #66ccff;
 }
 
 h4 {
@@ -59,9 +63,34 @@ table, th, td {
 }
 th, td {
     padding: 5px;
+    text-align: center;
+}
+
+ table#t01 th    {
+    background-color: black;
+    color: white;
 }
 
 .funky {
 	font-size: 5px;
+	 background-color: #d9d9d9;
+    color: white;
 }
 	
+.msgDate {
+	font-size: 15px;
+	width: 40%;
+	text-align: left;
+}
+
+.msgSubject {
+	font-size: 20px;
+	width: 35%;
+	text-align: left;
+}
+
+.msgSender {
+	font-size: 15px;
+	width: 25%;
+	text-align: left;
+}

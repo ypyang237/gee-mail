@@ -1,95 +1,95 @@
 <html>
-	<head>
-	<title>Pamela Yang</title>
-	<link href="static/css/bootstrap.min.css" rel="stylesheet">
-	<link href="static/css/custom.css" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-	<script src="js/mail-generator.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <head>
+  <title>Pamela Yang</title>
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/custom.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script src="js/mail-generator.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="js/mail-generator.js"></script>
-	<link href="css/style.css" rel="stylesheet" media="screen">
+  <script src="js/mail-generator.js"></script>
+  <link href="css/style.css" rel="stylesheet" media="screen">
     
 
-	<meta charset="utf-8">
- 	 <meta name="viewport" content="width=device-width, initial-scale=1">
- 	 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs
-  	jquery/1.12.0/jquery.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs
+    jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
-        
+
+
         var previousMails = window.geemails.length;
 
         for (i = 0; i < previousMails; i++) {
-
-            var newMessage = window.geemails[i];
-            appendMessage(newMessage);
-
+            prependMessage(window.geemails[i]);
         };
 
         // adding in the new emails :sorted by date, sender, subject and body
         //var main = function() {
-		//$(".row").append(function() {
-		//	var now = new Date();
-		//	return generateMessage(now);
-		//});
-		
+    //$(".row").append(function() {
+    //  var now = new Date();
+    //  return generateMessage(now);
+    //});
+    
 
-		function appendMessage () {
+    function prependMessage () {
                 
-        		var newMessage = getNewMessage();
-
-                var date = newMessage.date;
-                var sender = newMessage.sender;
-                var subject = newMessage.subject;
-                var body = newMessage.body;
-
-                
-                
+            var newMessage = getNewMessage();
 
                 $('.start').prepend(
 
                 '<tr>' +
-    				+ '<td></td>'
-    				+ '<td>' + date + '</td>'  
-    				+ '<td>' +  subject + '</td>' 
-    				+ '<td>' + sender + '</td>' + 		
-  				'</tr>'	+
+            + '<td></td>'
+            + '<td class="msgDate">' + newMessage.date + '</td>'  
+            + '<td class="msgSubject">' +  newMessage.subject + '</td>' 
+            + '<td class="msgSender">' + newMessage.sender + '</td>' +    
+          '</tr>' +
 
-  				'<tr>' + 
-				
-					'<td colspan="3" class="emailbdy funky">' + '<a class="clickMe" href="#">'+ body + '</a>' + '</td>' +
+          '<tr>' + 
+        
+          '<td colspan="3" class="emailbdy funky">' + '<a class="clickMe" href="#">'+ newMessage.body + '</a>' + '</td>' +
 
-  				'</tr>'
-				
+          '</tr>'
+        
 
-  				);
+          );
+
+                window.geemails.push(newMessage);
 
                 //$('.emailbdy').hide();
 
-         		$('.emailbdy').click(function() {
+            $('.emailbdy').click(function() {
 
-         			$(this).toggleClass('funky');
+              $(this).toggleClass('funky');
 
-         		});      	
-		};
+            });   
 
 
-			function clickToggle() {
-		         $('.emailbdy').click(function() {
+            $('#emailNum').text(window.geemails.length - previousMails);
 
-         			$(this).toggleClass('funky');
 
-         		}); 
-		     };
 
-		     clickToggle();
+
+
+    };
+
+
+      function clickToggle() {
+             $('.emailbdy').click(function() {
+
+              $(this).toggleClass('funky');
+
+            }); 
+         };
+
+       clickToggle();
 
        
   
@@ -97,9 +97,9 @@
 
 
 
-	setInterval(appendMessage,1000);
+  setInterval(prependMessage,3000);
 
-		    
+        
        }; 
       
     </script>
@@ -107,44 +107,35 @@
 
     
 
-	</head>
+  </head>
 
-	<body>
-
-
+  <body>
 
 
-		<div class="container" id="main">
-				
+    
 
-	<div class="container">
-  		<div class="jumbotron">
-    		<h1>Geemail Challenge!</h1>
-    			<p>Click each one open to view the content!</p> 
-  		</div>
+    <div class="container" id="main">
+        
 
-		<div class="email-heading">
-    		<div class="col-sm-6">
-    		<div class="dates"></div>
-      			<h3>Date</h3>
-      			
-   			</div>
-   			<div class="col-sm-4">
-   			<div class="subjects"></div>
-      			<h3>Subject</h3>
-      			
-    		</div>
-    		<div class="col-sm-2">
-    		<div class="senders"></div>
-      			<h3>Sender</h3>        
-      			
-    		</div>
-  		</div>
+  <div class="container">
+      <div class="jumbotron">
+        <h1>Geemail Challenge!</h1>
+          <p>Click each one to view/close the content!</p> 
+          <p>Total Emails</p> 
+          <p id="emailNum"></p>
+      </div>
 
-  	
+<table class="email-heading" id="t01" style="width:100%">
+  <tr>
+    <th width="40%">Date</th>
+    <th width="35%">Subject</th>    
+    <th width="25%">Sender</th>
+  </tr>
 
-	<table class="start" style="width:100%">
-	</table>
+</table>    
+
+  <table class="start" style="width:100%">
+  </table>
 
 
 
@@ -154,5 +145,5 @@
 
 
 
-	</body>
+  </body>
 
