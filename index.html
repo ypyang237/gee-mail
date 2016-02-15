@@ -1,22 +1,14 @@
 <html>
-  <head>
-  <title>Pamela Yang</title>
-  <link href="static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/css/custom.css" rel="stylesheet">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <script src="js/mail-generator.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="js/mail-generator.js"></script>
-  <link href="css/style.css" rel="stylesheet" media="screen">
-    
+	<head>
+	<title>Pamela Yang</title>
+	
+	<link href="css/style.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-  <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs
-    jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="js/mail-generator.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+  
 
     <script>
       window.onload = function(){
@@ -24,126 +16,96 @@
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
 
-
+      
+      //prepends onto html from the windows.geemails array 
         var previousMails = window.geemails.length;
 
         for (i = 0; i < previousMails; i++) {
             prependMessage(window.geemails[i]);
         };
-
-        // adding in the new emails :sorted by date, sender, subject and body
-        //var main = function() {
-    //$(".row").append(function() {
-    //  var now = new Date();
-    //  return generateMessage(now);
-    //});
-    
-
-    function prependMessage () {
+		
+  // creates a function to prepend the newly generated messages before the window.geemails array and the invisible class 'start'
+		function prependMessage() {
                 
-            var newMessage = getNewMessage();
+        		var newMessage = getNewMessage();
+
+            window.geemails.push(newMessage);
 
                 $('.start').prepend(
 
+              //prepends the generated messages by date/subject/sender into a table
                 '<tr>' +
-            + '<td></td>'
-            + '<td class="msgDate">' + newMessage.date + '</td>'  
-            + '<td class="msgSubject">' +  newMessage.subject + '</td>' 
-            + '<td class="msgSender">' + newMessage.sender + '</td>' +    
-          '</tr>' +
+    				  + '<td></td>'
+    			   	+ '<td class="msgDate">' + newMessage.date + '</td>'  
+    			   	+ '<td class="msgSubject">' +  newMessage.subject + '</td>' 
+    				  + '<td class="msgSender">' + newMessage.sender + '</td>' 
+              + '</tr>'	
+              
+              //prepends the generated message bodies into the table, 'hidden' and 'revelealed' by click events
+              +'<tr>' 
+              +'<td colspan="3" class="emailbdy funky">' + '<a class="clickMe" href="#">'+ newMessage.body + '</a>' + '</td>' 
+              +'</tr>'
 
-          '<tr>' + 
-        
-          '<td colspan="3" class="emailbdy funky">' + '<a class="clickMe" href="#">'+ newMessage.body + '</a>' + '</td>' +
+              );
 
-          '</tr>'
-        
-
-          );
-
-                window.geemails.push(newMessage);
-
-                //$('.emailbdy').hide();
+             
+            //selects the class 'emailbdy' to be individually toggled with the class 'funky' when one message body is selected 
+         		function clickToggle() {
 
             $('.emailbdy').click(function() {
 
-              $(this).toggleClass('funky');
+            $(this).toggleClass('funky');
 
-            });   
+              }); 
+            
+            };
 
-
-            $('#emailNum').text(window.geemails.length - previousMails);
-
-
-
-
-
-    };
-
-
-      function clickToggle() {
-             $('.emailbdy').click(function() {
-
-              $(this).toggleClass('funky');
-
-            }); 
-         };
-
-       clickToggle();
-
-       
-  
-
-
-
-
-  setInterval(prependMessage,3000);
+          clickToggle();
 
         
-       }; 
+
+
+          //selects the html element with the id'emailNum' and refreshes its number of emails whenever newMessages come in
+          //(window.geemails.length - previousMails) is because it counts the number of previousMails twice 
+             
+            $('#emailNum').text(window.geemails.length - previousMails);
+              
+            };
+
+          setInterval(prependMessage,2000);
+
+		    
+          }; 
       
     </script>
 
+    </head>
 
-    
+	   <body>
 
-  </head>
-
-  <body>
-
-
-    
-
-    <div class="container" id="main">
-        
-
-  <div class="container">
-      <div class="jumbotron">
-        <h1>Geemail Challenge!</h1>
-          <p>Click each one to view/close the content!</p> 
-          <p>Total Emails</p> 
+      <div class="container" id="main">
+				
+      <div class="container">
+  		<div class="jumbotron">
+    		<h1>Geemail Challenge!</h1>
+    			<p>Click each one to view/close the content!</p> 
+          <p>Total Emails :</p> 
           <p id="emailNum"></p>
-      </div>
+  		</div>
 
-<table class="email-heading" id="t01" style="width:100%">
-  <tr>
-    <th width="40%">Date</th>
-    <th width="35%">Subject</th>    
-    <th width="25%">Sender</th>
-  </tr>
+      <table class="email-heading" id="t01" style="width:100%">
+        
+        <tr>
+          <th width="40%">Date</th>
+          <th width="35%">Subject</th>    
+          <th width="25%">Sender</th>
+        </tr>
 
-</table>    
+      </table>  	
 
-  <table class="start" style="width:100%">
-  </table>
+	    <table class="start" style="width:100%">
+	   
+      </table>
 
-
-
-                
-                
-
-
-
-
-  </body>
+    </body>
 
